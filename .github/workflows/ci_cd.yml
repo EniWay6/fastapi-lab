@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "master" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "master" ]
 
 jobs:
   test-and-lint:
@@ -35,8 +35,8 @@ jobs:
 
   deploy:
     needs: test-and-lint
-    # Деплоїмо тільки якщо це пуш у main (не на пул реквестах)
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    # Деплоїмо тільки якщо це пуш у master (не на пул реквестах)
+    if: github.ref == 'refs/heads/master' && github.event_name == 'push'
     runs-on: ubuntu-latest
     steps:
       - name: Trigger Render Deploy
