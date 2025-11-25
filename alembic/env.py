@@ -9,7 +9,8 @@ from alembic import context
 
 # Зміна А: Імпорт моделей та метаданих
 from src.database.db import Base
-from src.database.models import User  # Обов'язково імпортувати модель!
+from src.database.models import User  # noqa
+
 target_metadata = Base.metadata
 
 # this is the Alembic Config object, which provides
@@ -81,6 +82,7 @@ def run_migrations_online() -> None:
 
     # Зміна Б: Підключення URL з налаштувань
     from src.config import settings
+
     config = context.config
     config.set_main_option("sqlalchemy.url", settings.DATABASE_URL)
 
